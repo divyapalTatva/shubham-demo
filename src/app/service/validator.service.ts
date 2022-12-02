@@ -7,20 +7,13 @@ import { FormGroup } from '@angular/forms';
 export class ValidatorService {
 
   public getError(fm: FormGroup, key: string) {
-    if (fm.get(key)?.invalid && fm.get(key)?.touched) {
-      switch (key) {
-        case 'email':
-          if (fm.get('email')?.hasError('required')) {
-            return 'please enter valid email...'
-          }
-          if (fm.get('email')?.hasError('email')) {
-            return 'your email is wrong email contains one "@" and one "."  '
-          }
-          return ''
-        case 'name':
-          return 'please enter valid name...'
-        case 'date':
-          return 'please select date...'
+    const control = fm.get(key)
+    if (control && control.invalid && control.touched) {
+      if (control.hasError('required')) {
+        return 'this field is required...'
+      }
+      if (control.hasError('email')) {
+        return 'your email is wrong email contains one "@" and one "." '
       }
     }
     return '';
