@@ -2,23 +2,23 @@
 
     <h1>{{title}}</h1>
 
-    <form [formGroup]="addForm" #basicForm="ngForm" style="margin-bottom: 20px;" (submit)="getData(basicForm.value)">
-        <input id="name" type="text" style="width: 300px;padding: 10px; " name="UserName"
-            formControlName="name" placeholder="Enter Your Name"><br>
+    <form [formGroup]="addForm"  style="margin-bottom: 20px;" (submit)="getData()">
+        <input id="name" type="text" style="width: 300px;padding: 10px; " name="name"
+            formControlName="name" placeholder="Enter Your Name" [(ngModel)]="nameff"><br>
         <span>
             {{error('name')}}
         </span>
         <br><br>
 
-        <input id="email" type="text" style="width: 300px;padding: 10px;" formControlName="email"
-            name="email" placeholder="Enter Your Email"><br>
+        <input id="email" type="text" style="width: 300px;padding: 10px;" 
+        formControlName="email" [(ngModel)]="emailff" name="email" placeholder="Enter Your Email"><br>
         <span>
             {{error('email')}}
         </span>
         <br><br>
 
-        <input id="time" [min]="minDate" formControlName="date" [max]="maxDate" style="width: 300px;padding: 10px;" type="date"
-            name="DOB"><br>
+        <input id="time" [min]="minDate" formControlName="date" [max]="maxDate" 
+        style="width: 300px;padding: 10px;" type="date" [(ngModel)]="DOBff" name="DOB"><br>
         <span>
             {{error('date')}}
         </span>

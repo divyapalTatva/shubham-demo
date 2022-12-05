@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, NgForm } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ValidatorService } from 'src/app/service/validator.service';
+import { AddService } from 'src/app/service/storedata/add.service';
 
 
 @Component({
@@ -12,12 +13,17 @@ import { ValidatorService } from 'src/app/service/validator.service';
 })
 export class AddComponent implements OnInit {
 
+  nameff=''
+  emailff=''
+  DOBff=''
+
   addForm: FormGroup;
 
   maxDate = "";
   minDate = '';
 
-  constructor(private fb: FormBuilder, private ve: ValidatorService) { }
+  constructor(private fb: FormBuilder, private ve: ValidatorService,private r:Router
+    ,private addservice:AddService) { }
 
   error(key: string) {
     return this.ve.getError(this.addForm, key)
@@ -27,7 +33,7 @@ export class AddComponent implements OnInit {
 
     this.addForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      name: ['', Validators.required,],
+      name: ['', [Validators.required,Validators.minLength(3)]],
       date: ['', Validators.required]
     })
 
@@ -49,7 +55,14 @@ export class AddComponent implements OnInit {
 
 
   title = 'add'
-  getData(data: NgForm) {
-    console.warn(data)
+  getData() {
+    let list={
+      name:this.nameff,
+      email:this.emailff,
+      DOB:this.DOBff
+    }
+    this.addservice.addSingleData(list)
+    this.r.navigate([''])
+
   }
 }

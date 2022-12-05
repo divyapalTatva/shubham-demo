@@ -1,6 +1,21 @@
-<p>list works!</p>
-<p id="nm">id component is : {{id}}</p>
-<a routerLink="/add" style="color: white; background-color: red;text-decoration: 
-    none;padding: 10px 40px; font-size: 20px; border-radius: 30px;">Add</a> &nbsp;
-<!-- <app-buttons></app-buttons> -->
-<router-outlet></router-outlet>
+<table class="center">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>DOB</th>
+        <th>Action</th>
+    </tr>
+    <tr *ngFor="let list of datas" style="text-align: center;">
+        <td>{{list.id}}</td>
+        <td>{{list.name}}</td>
+        <td>{{list.email}}</td>
+        <td>{{list.DOB}}</td>
+        <td><a>Edit</a> | <a (click)="deleted()">Delete</a></td>
+    </tr>
+</table>
+
+<div style="margin-top: 30px; text-align: center;">
+    <a routerLink="/add" style="color: white; background-color: red;text-decoration: 
+    none;padding: 10px 40px;font-size: 20px; border-radius: 30px;">Add</a>
+</div>
