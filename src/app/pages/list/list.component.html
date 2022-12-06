@@ -1,21 +1,20 @@
 <table class="center">
     <tr>
+        <th>UserId</th>
         <th>Id</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>DOB</th>
+        <th>Title</th>
+        <th>Body</th>
         <th>Action</th>
     </tr>
-    <tr *ngFor="let list of datas" style="text-align: center;">
+    <tr *ngFor="let list of data let x=index" style="text-align: center;">
+        <td>{{list.userId}}</td>
         <td>{{list.id}}</td>
-        <td>{{list.name}}</td>
-        <td>{{list.email}}</td>
-        <td>{{list.DOB}}</td>
-        <td><a>Edit</a> | <a (click)="deleted()">Delete</a></td>
+        <td>{{list.title}}</td>
+        <td>{{list.body}}</td>
+        <td><a (click)="deleted(list.id)">Delete</a></td>
     </tr>
 </table>
 
-<div style="margin-top: 30px; text-align: center;">
-    <a routerLink="/add" style="color: white; background-color: red;text-decoration: 
-    none;padding: 10px 40px;font-size: 20px; border-radius: 30px;">Add</a>
+<div id="div">
+    <a routerLink="/add" id="btn">Add</a>
 </div>

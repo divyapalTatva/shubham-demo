@@ -1,37 +1,31 @@
-<div style="align-items: center; text-align: center;">
+<div>
 
     <h1>{{title}}</h1>
 
-    <form [formGroup]="addForm"  style="margin-bottom: 20px;" (submit)="getData()">
-        <input id="name" type="text" style="width: 300px;padding: 10px; " name="name"
-            formControlName="name" placeholder="Enter Your Name" [(ngModel)]="nameff"><br>
+    <form [formGroup]="addForm" (submit)="getData()">
+        <input type="text" name="userId" formControlName="uId" placeholder="Enter Your UserId"
+            [(ngModel)]="userId_F"><br>
         <span>
-            {{error('name')}}
+            {{error('uId')}}
         </span>
         <br><br>
 
-        <input id="email" type="text" style="width: 300px;padding: 10px;" 
-        formControlName="email" [(ngModel)]="emailff" name="email" placeholder="Enter Your Email"><br>
+        <input type="text" formControlName="title" [(ngModel)]="title_F" name="title"
+            placeholder="Enter Your Email"><br>
         <span>
-            {{error('email')}}
+            {{error('title')}}
         </span>
         <br><br>
 
-        <input id="time" [min]="minDate" formControlName="date" [max]="maxDate" 
-        style="width: 300px;padding: 10px;" type="date" [(ngModel)]="DOBff" name="DOB"><br>
+        <input formControlName="body" type="text" [(ngModel)]="body_F" placeholder="enter body text" name="body"><br>
         <span>
-            {{error('date')}}
+            {{error('body')}}
         </span>
         <br><br>
 
-
-        <button id="btn" style="color: white;background-color: blue; border-radius: 
-    30px;margin: 0px 4px;padding: 10px;border: none;" [disabled]="addForm.invalid">Add New User</button>
-        <!-- <button [onClick]="clearForm" id="btn1" style="color: white;background-color: grey; border-radius: 
-    30px;margin: 0px 4px;padding: 10px 20px;border: none;">Clear</button> -->
+        <button id="btn" [disabled]="addForm.invalid">Add New User</button>
     </form>
 
-    <a routerLink="/list" style="color: white; background-color: green;text-decoration: 
-    none;padding: 10px 40px; font-size: 20px; border-radius: 30px;">List</a>
+    <a routerLink="/list" id="listBtn">List</a>
 
 </div>

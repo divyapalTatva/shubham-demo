@@ -1,31 +1,38 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, convertToParamMap, Router } from '@angular/router';
-import { AddService } from 'src/app/service/storedata/add.service';
-import { Iadddata } from '../model/Iadddata';
+import { take } from 'rxjs';
+import { AddService } from 'src/app/services/store-data/add.service';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
+
 export class ListComponent implements OnInit {
   title = 'list';
-  id: any
-  temp: any
+  id: number;
+  temp: number;
+  data: any;
 
-  datas!: Iadddata[];
-  constructor(private ar: ActivatedRoute, private r: Router, private addservice: AddService) { }
+  constructor(private ar: ActivatedRoute, private router: Router, private addService: AddService) { }
+
   ngOnInit(): void {
     this.id = Number(this.ar.snapshot.paramMap.get('id'));
-    this.temp = this.id
+    this.temp = this.id;
     if (isNaN(this.temp)) {
-      this.r.navigate(['/list']);
+      this.router.navigate(['/list']);
     }
-    this.datas = this.addservice.datas;
-
+    this.getT();
   }
-  deleted() {
 
+  getT() {
+    this.addService.getData().subscribe(data => {
+      this.data = data;
+    })
+  }
+
+  deleted(x: number) {
+    this.addService.deleteData(x).subscribe()
   }
 }
-// export class list{}
