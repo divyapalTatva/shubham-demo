@@ -38,5 +38,6 @@ export class ErrorHandleService {
       }
     }
     console.log(errMessage, 'errMessage');
+    this.toaster.error(errMessage);
   }
 }
