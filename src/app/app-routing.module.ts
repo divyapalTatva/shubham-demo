@@ -8,7 +8,7 @@ import { ErrorComponent } from './components/error/error.component';
 import { AuthGuard } from './guard/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: ListComponent, pathMatch: 'full' }, //for rote not exist url
+  { path: '', redirectTo: 'list', pathMatch: 'full' }, //for rote not exist url
   { path: 'list', component: ListComponent, title: 'list' },
   { path: 'list/:id', canActivate: [AuthGuard], component: ListComponent, title: 'in list' },
   { path: 'add', component: AddComponent, title: 'add' },
