@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { InterceptorService } from './interceptor/interceptor.service';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material/table'
 
 @NgModule({
   declarations: [
@@ -23,11 +24,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     HttpClientModule,
     ToastrModule.forRoot({
-      positionClass:'toast-top-center',
-      timeOut:3000,
-      easeTime:1100,
+      positionClass: 'toast-top-center',
+      timeOut: 3000,
+      easeTime: 1100,
     }),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatTableModule,
   ],
   providers: [
     {
